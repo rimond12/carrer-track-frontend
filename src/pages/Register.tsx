@@ -9,7 +9,7 @@ export const Register: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  
+
   const [errors, setErrors] = useState<{ name?: string; email?: string; password?: string; confirmPassword?: string }>({});
   const [apiError, setApiError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -67,7 +67,7 @@ export const Register: React.FC = () => {
   return (
     <div className="min-h-[85vh] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md glass-panel rounded-3xl p-8 border border-slate-800 shadow-2xl space-y-6">
-        
+
         {/* Header */}
         <div className="text-center space-y-2">
           <div className="w-12 h-12 rounded-2xl bg-purple-600/20 text-purple-400 border border-purple-500/30 flex items-center justify-center mx-auto shadow-md">
@@ -95,10 +95,9 @@ export const Register: React.FC = () => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Sumit Saha"
-              className={`w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border ${
-                errors.name ? 'border-red-500' : 'border-slate-700'
-              } text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500`}
+              placeholder="e.g. Rimon Dey"
+              className={`w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border ${errors.name ? 'border-red-500' : 'border-slate-700'
+                } text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500`}
             />
             {errors.name && <p className="mt-1 text-xs text-red-400">{errors.name}</p>}
           </div>
@@ -112,10 +111,9 @@ export const Register: React.FC = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="e.g. sumit@example.com"
-              className={`w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border ${
-                errors.email ? 'border-red-500' : 'border-slate-700'
-              } text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500`}
+              placeholder="e.g. example@mail.com"
+              className={`w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border ${errors.email ? 'border-red-500' : 'border-slate-700'
+                } text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500`}
             />
             {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
           </div>
@@ -131,9 +129,8 @@ export const Register: React.FC = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border ${
-                  errors.password ? 'border-red-500' : 'border-slate-700'
-                } text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500`}
+                className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border ${errors.password ? 'border-red-500' : 'border-slate-700'
+                  } text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500`}
               />
               {errors.password && <p className="mt-1 text-xs text-red-400">{errors.password}</p>}
             </div>
@@ -148,9 +145,8 @@ export const Register: React.FC = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="••••••••"
-                className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border ${
-                  errors.confirmPassword ? 'border-red-500' : 'border-slate-700'
-                } text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500`}
+                className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border ${errors.confirmPassword ? 'border-red-500' : 'border-slate-700'
+                  } text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500`}
               />
               {errors.confirmPassword && <p className="mt-1 text-xs text-red-400">{errors.confirmPassword}</p>}
             </div>
