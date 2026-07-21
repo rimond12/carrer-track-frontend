@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
     <footer className="w-full border-t border-slate-200 bg-white text-slate-600 text-xs py-8 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-          
+
           {/* Column 1: App Info */}
           <div className="space-y-1.5 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start space-x-2">
@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
               <span>Project Candidate</span>
             </div>
             <p className="text-slate-900 font-extrabold text-xs">
-              Developer: <span className="text-indigo-600">Sumit Saha</span>
+              Developer: <span className="text-indigo-600">Rimon Dey</span>
             </p>
             <p className="text-slate-600 text-[11px] font-mono">
               Student ID: <span className="font-bold text-slate-800">CT-2026-88492</span>

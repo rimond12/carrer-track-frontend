@@ -55,7 +55,7 @@ export const Login: React.FC = () => {
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md bg-white border-2 border-slate-900 shadow-xl p-8 space-y-6">
-        
+
         {/* Header */}
         <div className="text-center space-y-2">
           <div className="w-12 h-12 bg-indigo-600 text-white flex items-center justify-center mx-auto">
@@ -83,10 +83,9 @@ export const Login: React.FC = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="e.g. sumit@example.com"
-              className={`w-full px-4 py-3 bg-white border ${
-                errors.email ? 'border-red-500' : 'border-slate-300'
-              } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
+              placeholder="e.g. example@mail.com"
+              className={`w-full px-4 py-3 bg-white border ${errors.email ? 'border-red-500' : 'border-slate-300'
+                } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
             />
             {errors.email && <p className="mt-1 text-xs font-bold text-red-600">{errors.email}</p>}
           </div>
@@ -101,9 +100,8 @@ export const Login: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className={`w-full px-4 py-3 bg-white border ${
-                errors.password ? 'border-red-500' : 'border-slate-300'
-              } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
+              className={`w-full px-4 py-3 bg-white border ${errors.password ? 'border-red-500' : 'border-slate-300'
+                } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
             />
             {errors.password && <p className="mt-1 text-xs font-bold text-red-600">{errors.password}</p>}
           </div>

@@ -9,7 +9,7 @@ export const Register: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  
+
   const [errors, setErrors] = useState<{ name?: string; email?: string; password?: string; confirmPassword?: string }>({});
   const [apiError, setApiError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -67,7 +67,7 @@ export const Register: React.FC = () => {
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md bg-white border-2 border-slate-900 shadow-xl p-8 space-y-6">
-        
+
         {/* Header */}
         <div className="text-center space-y-2">
           <div className="w-12 h-12 bg-purple-600 text-white flex items-center justify-center mx-auto">
@@ -95,10 +95,9 @@ export const Register: React.FC = () => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Sumit Saha"
-              className={`w-full px-4 py-2.5 bg-white border ${
-                errors.name ? 'border-red-500' : 'border-slate-300'
-              } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
+              placeholder="e.g. Rimon Dey"
+              className={`w-full px-4 py-2.5 bg-white border ${errors.name ? 'border-red-500' : 'border-slate-300'
+                } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
             />
             {errors.name && <p className="mt-1 text-xs font-bold text-red-600">{errors.name}</p>}
           </div>
@@ -112,10 +111,9 @@ export const Register: React.FC = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="e.g. sumit@example.com"
-              className={`w-full px-4 py-2.5 bg-white border ${
-                errors.email ? 'border-red-500' : 'border-slate-300'
-              } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
+              placeholder="e.g. example@mail.com"
+              className={`w-full px-4 py-2.5 bg-white border ${errors.email ? 'border-red-500' : 'border-slate-300'
+                } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
             />
             {errors.email && <p className="mt-1 text-xs font-bold text-red-600">{errors.email}</p>}
           </div>
@@ -131,9 +129,8 @@ export const Register: React.FC = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className={`w-full px-3.5 py-2.5 bg-white border ${
-                  errors.password ? 'border-red-500' : 'border-slate-300'
-                } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
+                className={`w-full px-3.5 py-2.5 bg-white border ${errors.password ? 'border-red-500' : 'border-slate-300'
+                  } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
               />
               {errors.password && <p className="mt-1 text-xs font-bold text-red-600">{errors.password}</p>}
             </div>
@@ -148,9 +145,8 @@ export const Register: React.FC = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="••••••••"
-                className={`w-full px-3.5 py-2.5 bg-white border ${
-                  errors.confirmPassword ? 'border-red-500' : 'border-slate-300'
-                } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
+                className={`w-full px-3.5 py-2.5 bg-white border ${errors.confirmPassword ? 'border-red-500' : 'border-slate-300'
+                  } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
               />
               {errors.confirmPassword && <p className="mt-1 text-xs font-bold text-red-600">{errors.confirmPassword}</p>}
             </div>
