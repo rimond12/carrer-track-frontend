@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
               Developer: <span className="text-indigo-600">Rimon Dey</span>
             </p>
             <p className="text-slate-600 text-[11px] font-mono">
-              Student ID: <span className="font-bold text-slate-800">CT-2026-88492</span>
+              Student ID: <span className="font-bold text-slate-800">WEB11-0980</span>
             </p>
           </div>
 
