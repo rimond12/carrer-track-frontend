@@ -31,16 +31,16 @@ export const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
-      <div className="relative w-full max-w-md glass-panel rounded-2xl border border-red-500/30 shadow-2xl p-6 text-center space-y-4">
-        <div className="w-12 h-12 rounded-2xl bg-red-500/20 text-red-400 border border-red-500/30 flex items-center justify-center mx-auto shadow-inner">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
+      <div className="relative w-full max-w-md bg-white border-2 border-red-600 shadow-2xl p-6 text-center space-y-4">
+        <div className="w-12 h-12 bg-red-100 text-red-600 border border-red-300 flex items-center justify-center mx-auto">
           <AlertTriangle className="w-6 h-6" />
         </div>
 
         <div>
-          <h3 className="text-lg font-bold text-white">Delete Job Application?</h3>
-          <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">
-            Are you sure you want to permanently delete <span className="font-semibold text-slate-200">"{itemTitle}"</span>? This action cannot be undone.
+          <h3 className="text-lg font-black text-slate-900 uppercase tracking-tight">Delete Job Application?</h3>
+          <p className="text-xs text-slate-600 mt-2 leading-relaxed font-medium">
+            Are you sure you want to permanently delete <span className="font-bold text-slate-900">"{itemTitle}"</span>? This action cannot be undone.
           </p>
         </div>
 
@@ -49,7 +49,7 @@ export const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
             type="button"
             onClick={onClose}
             disabled={isDeleting}
-            className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-slate-800 transition cursor-pointer"
+            className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-slate-700 hover:bg-slate-100 border border-slate-300 transition cursor-pointer"
           >
             Cancel
           </button>
@@ -57,7 +57,7 @@ export const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
             type="button"
             onClick={handleConfirm}
             disabled={isDeleting}
-            className="flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-red-600 hover:bg-red-500 disabled:opacity-50 transition shadow-md shadow-red-500/20 cursor-pointer"
+            className="flex items-center space-x-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 disabled:opacity-50 transition shadow-sm cursor-pointer"
           >
             {isDeleting ? (
               <>

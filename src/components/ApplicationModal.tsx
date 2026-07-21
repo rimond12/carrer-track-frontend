@@ -98,20 +98,20 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-lg glass-panel rounded-2xl border border-slate-700/80 shadow-2xl overflow-hidden my-8">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs overflow-y-auto">
+      <div className="relative w-full max-w-lg bg-white border-2 border-slate-900 shadow-2xl overflow-hidden my-8">
         
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/50">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50">
           <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+            <div className="w-8 h-8 bg-indigo-600 flex items-center justify-center text-white font-bold">
               <Briefcase className="w-4 h-4" />
             </div>
-            <h2 className="text-lg font-bold text-white tracking-tight">{title}</h2>
+            <h2 className="text-base font-extrabold text-slate-900 uppercase tracking-tight">{title}</h2>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+            className="p-1 text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition"
           >
             <X className="w-5 h-5" />
           </button>
@@ -119,7 +119,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
 
         {/* API Error Notification */}
         {apiError && (
-          <div className="mx-6 mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-medium">
+          <div className="mx-6 mt-4 p-3 bg-red-50 border border-red-300 text-red-700 text-xs font-bold">
             {apiError}
           </div>
         )}
@@ -128,54 +128,54 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           {/* Company Name */}
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center gap-1.5">
-              <Building className="w-3.5 h-3.5 text-indigo-400" />
-              Company Name <span className="text-red-400">*</span>
+            <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1 flex items-center gap-1.5">
+              <Building className="w-3.5 h-3.5 text-indigo-600" />
+              Company Name <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
               placeholder="e.g. Google, Microsoft, Local Startup"
-              className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border ${
-                errors.companyName ? 'border-red-500' : 'border-slate-700'
-              } text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500`}
+              className={`w-full px-3.5 py-2.5 bg-white border ${
+                errors.companyName ? 'border-red-500' : 'border-slate-300'
+              } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
             />
-            {errors.companyName && <p className="mt-1 text-xs text-red-400">{errors.companyName}</p>}
+            {errors.companyName && <p className="mt-1 text-xs font-bold text-red-600">{errors.companyName}</p>}
           </div>
 
           {/* Job Title */}
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center gap-1.5">
-              <Briefcase className="w-3.5 h-3.5 text-purple-400" />
-              Job Title <span className="text-red-400">*</span>
+            <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1 flex items-center gap-1.5">
+              <Briefcase className="w-3.5 h-3.5 text-purple-600" />
+              Job Title <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               value={jobTitle}
               onChange={(e) => setJobTitle(e.target.value)}
               placeholder="e.g. Senior Frontend Engineer, Full Stack Developer"
-              className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border ${
-                errors.jobTitle ? 'border-red-500' : 'border-slate-700'
-              } text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500`}
+              className={`w-full px-3.5 py-2.5 bg-white border ${
+                errors.jobTitle ? 'border-red-500' : 'border-slate-300'
+              } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
             />
-            {errors.jobTitle && <p className="mt-1 text-xs text-red-400">{errors.jobTitle}</p>}
+            {errors.jobTitle && <p className="mt-1 text-xs font-bold text-red-600">{errors.jobTitle}</p>}
           </div>
 
           {/* Grid: Source & Status */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center gap-1.5">
-                <Tag className="w-3.5 h-3.5 text-blue-400" />
+              <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1 flex items-center gap-1.5">
+                <Tag className="w-3.5 h-3.5 text-blue-600" />
                 Application Source
               </label>
               <select
                 value={source}
                 onChange={(e) => setSource(e.target.value as ApplicationSource)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500"
+                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600"
               >
                 {SOURCE_OPTIONS.map((src) => (
-                  <option key={src} value={src} className="bg-slate-900 text-white">
+                  <option key={src} value={src}>
                     {src}
                   </option>
                 ))}
@@ -183,17 +183,17 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center gap-1.5">
-                <Send className="w-3.5 h-3.5 text-emerald-400" />
+              <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1 flex items-center gap-1.5">
+                <Send className="w-3.5 h-3.5 text-emerald-600" />
                 Application Status
               </label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value as ApplicationStatus)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500"
+                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600"
               >
                 {STATUS_OPTIONS.map((st) => (
-                  <option key={st} value={st} className="bg-slate-900 text-white">
+                  <option key={st} value={st}>
                     {st}
                   </option>
                 ))}
@@ -204,62 +204,62 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
           {/* Grid: Job URL & Application Date */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center gap-1.5">
-                <Link2 className="w-3.5 h-3.5 text-pink-400" />
-                Job Post URL (Optional)
+              <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1 flex items-center gap-1.5">
+                <Link2 className="w-3.5 h-3.5 text-pink-600" />
+                Job Post URL
               </label>
               <input
                 type="url"
                 value={jobUrl}
                 onChange={(e) => setJobUrl(e.target.value)}
                 placeholder="https://..."
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500"
+                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-amber-400" />
+              <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1 flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5 text-amber-600" />
                 Application Date
               </label>
               <input
                 type="date"
                 value={applicationDate}
                 onChange={(e) => setApplicationDate(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500"
+                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600"
               />
             </div>
           </div>
 
           {/* Notes */}
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center gap-1.5">
-              <FileText className="w-3.5 h-3.5 text-slate-400" />
-              Notes / Key Details (Optional)
+            <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1 flex items-center gap-1.5">
+              <FileText className="w-3.5 h-3.5 text-slate-600" />
+              Notes / Key Details
             </label>
             <textarea
               rows={3}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="e.g. Referred by Sarah, expected salary range, tech stack requirements..."
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500"
+              placeholder="e.g. Expected salary range, tech stack, follow-up notes..."
+              className="w-full px-3.5 py-2.5 bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600"
             />
           </div>
 
           {/* Modal Footer Buttons */}
-          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-slate-800">
+          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-slate-200">
             <button
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="px-4 py-2.5 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer"
+              className="px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-100 uppercase tracking-wider transition cursor-pointer border border-slate-300"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-indigo-500/20 transition-all cursor-pointer"
+              className="flex items-center space-x-2 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 transition cursor-pointer shadow-sm"
             >
               {isSubmitting ? (
                 <>

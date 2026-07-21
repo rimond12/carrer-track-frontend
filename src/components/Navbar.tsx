@@ -17,32 +17,33 @@ export const Navbar: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="sticky top-0 z-40 w-full glass-panel border-b border-slate-800/80">
+    <nav className="sticky top-0 z-40 w-full bg-white border-b border-slate-200 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo & Brand */}
+          
+          {/* Logo & Brand - Square Badge */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform duration-200">
+            <div className="w-10 h-10 bg-indigo-600 flex items-center justify-center shadow-md group-hover:bg-indigo-700 transition duration-200">
               <Briefcase className="w-5 h-5 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-xl tracking-tight text-white flex items-center gap-1.5">
-                CareerTrack <span className="text-xs px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-400 font-semibold border border-indigo-500/30">Lite</span>
+              <span className="font-black text-xl tracking-tight text-slate-900 flex items-center gap-1.5">
+                CareerTrack <span className="text-[10px] px-2 py-0.5 bg-indigo-50 text-indigo-700 font-bold border border-indigo-200 uppercase tracking-wider">Lite</span>
               </span>
-              <span className="text-[10px] text-slate-400 font-medium -mt-1">Job Application Tracker</span>
+              <span className="text-[10px] text-slate-500 font-semibold tracking-wider uppercase -mt-0.5">Job Tracker</span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-1">
+          {/* Desktop Navigation Links - Square Buttons */}
+          <div className="hidden md:flex items-center space-x-2">
             {isAuthenticated ? (
               <>
                 <Link
                   to="/dashboard"
-                  className={`flex items-center space-x-2 px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  className={`flex items-center space-x-2 px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all border ${
                     isActive('/dashboard')
-                      ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 shadow-sm'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                      : 'text-slate-700 bg-white border-slate-200 hover:border-indigo-300 hover:text-indigo-600'
                   }`}
                 >
                   <LayoutDashboard className="w-4 h-4" />
@@ -51,10 +52,10 @@ export const Navbar: React.FC = () => {
 
                 <Link
                   to="/applications"
-                  className={`flex items-center space-x-2 px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  className={`flex items-center space-x-2 px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all border ${
                     isActive('/applications')
-                      ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 shadow-sm'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                      : 'text-slate-700 bg-white border-slate-200 hover:border-indigo-300 hover:text-indigo-600'
                   }`}
                 >
                   <ListFilter className="w-4 h-4" />
@@ -64,22 +65,22 @@ export const Navbar: React.FC = () => {
             ) : null}
           </div>
 
-          {/* Desktop Right User Menu / Auth Buttons */}
+          {/* Right Menu / User Profile */}
           <div className="hidden md:flex items-center space-x-4">
             {isAuthenticated ? (
               <div className="flex items-center space-x-3">
-                <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/60">
-                  <div className="w-6 h-6 rounded-full bg-indigo-500/30 text-indigo-300 flex items-center justify-center text-xs font-bold">
+                <div className="flex items-center space-x-2.5 px-3 py-1.5 bg-slate-100 border border-slate-200">
+                  <div className="w-6 h-6 bg-indigo-600 text-white flex items-center justify-center text-xs font-black">
                     {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
                   </div>
-                  <span className="text-xs font-medium text-slate-200 max-w-[120px] truncate">{user?.name}</span>
+                  <span className="text-xs font-bold text-slate-800 max-w-[130px] truncate">{user?.name}</span>
                 </div>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-red-400 hover:bg-red-500/10 border border-transparent hover:border-red-500/20 transition-all duration-200 cursor-pointer"
+                  className="flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-bold text-slate-600 hover:text-red-600 bg-white hover:bg-red-50 border border-slate-200 hover:border-red-200 transition cursor-pointer uppercase tracking-wider"
                   title="Sign out"
                 >
-                  <LogOut className="w-4 h-4" />
+                  <LogOut className="w-3.5 h-3.5" />
                   <span>Logout</span>
                 </button>
               </div>
@@ -87,13 +88,13 @@ export const Navbar: React.FC = () => {
               <div className="flex items-center space-x-3">
                 <Link
                   to="/login"
-                  className="px-4 py-2 text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-all"
+                  className="px-4 py-2 text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 border border-slate-200 transition uppercase tracking-wider"
                 >
                   Log In
                 </Link>
                 <Link
                   to="/register"
-                  className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-lg shadow-md shadow-indigo-500/20 transition-all duration-200"
+                  className="px-5 py-2 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition uppercase tracking-wider"
                 >
                   Register Free
                 </Link>
@@ -101,11 +102,11 @@ export const Navbar: React.FC = () => {
             )}
           </div>
 
-          {/* Mobile menu trigger */}
+          {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none"
+              className="p-2 border border-slate-200 text-slate-700 hover:bg-slate-100"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -115,30 +116,30 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden px-4 pt-2 pb-4 space-y-2 bg-slate-900/95 border-b border-slate-800 backdrop-blur-xl">
+        <div className="md:hidden px-4 pt-3 pb-4 space-y-2 bg-white border-b border-slate-200 shadow-lg">
           {isAuthenticated ? (
             <>
-              <div className="flex items-center space-x-3 px-3 py-2 border-b border-slate-800 mb-2">
-                <UserIcon className="w-5 h-5 text-indigo-400" />
+              <div className="flex items-center space-x-3 p-3 bg-slate-50 border border-slate-200 mb-2">
+                <UserIcon className="w-5 h-5 text-indigo-600" />
                 <div>
-                  <p className="text-sm font-semibold text-white">{user?.name}</p>
-                  <p className="text-xs text-slate-400">{user?.email}</p>
+                  <p className="text-xs font-bold text-slate-900">{user?.name}</p>
+                  <p className="text-[11px] text-slate-500">{user?.email}</p>
                 </div>
               </div>
               <Link
                 to="/dashboard"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm text-slate-200 hover:bg-slate-800"
+                className="flex items-center space-x-2 px-3 py-2 text-xs font-bold uppercase tracking-wider text-slate-800 hover:bg-slate-100 border border-slate-200"
               >
-                <LayoutDashboard className="w-4 h-4" />
+                <LayoutDashboard className="w-4 h-4 text-indigo-600" />
                 <span>Dashboard</span>
               </Link>
               <Link
                 to="/applications"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm text-slate-200 hover:bg-slate-800"
+                className="flex items-center space-x-2 px-3 py-2 text-xs font-bold uppercase tracking-wider text-slate-800 hover:bg-slate-100 border border-slate-200"
               >
-                <ListFilter className="w-4 h-4" />
+                <ListFilter className="w-4 h-4 text-indigo-600" />
                 <span>Applications</span>
               </Link>
               <button
@@ -146,7 +147,7 @@ export const Navbar: React.FC = () => {
                   setMobileMenuOpen(false);
                   handleLogout();
                 }}
-                className="w-full text-left flex items-center space-x-2 px-3 py-2 rounded-lg text-sm text-red-400 hover:bg-red-500/10"
+                className="w-full text-left flex items-center space-x-2 px-3 py-2 text-xs font-bold uppercase tracking-wider text-red-600 hover:bg-red-50 border border-red-200"
               >
                 <LogOut className="w-4 h-4" />
                 <span>Logout</span>
@@ -157,14 +158,14 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block w-full text-center py-2 text-sm font-medium text-slate-200 bg-slate-800 rounded-lg"
+                className="block w-full text-center py-2.5 text-xs font-bold uppercase tracking-wider text-slate-800 bg-slate-100 border border-slate-200"
               >
                 Log In
               </Link>
               <Link
                 to="/register"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block w-full text-center py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg"
+                className="block w-full text-center py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-indigo-600"
               >
                 Register Account
               </Link>

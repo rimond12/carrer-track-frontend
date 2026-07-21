@@ -96,11 +96,11 @@ export const Applications: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
       
-      {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      {/* Top Header Banner */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 border-2 border-slate-900 shadow-xs">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Job Applications</h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight uppercase">Job Applications</h1>
+          <p className="text-xs text-slate-600 font-medium mt-1">
             Search, filter, and track all your target positions in one place.
           </p>
         </div>
@@ -108,15 +108,15 @@ export const Applications: React.FC = () => {
         <div className="flex items-center space-x-3">
           <button
             onClick={() => handleOpenAiModal('')}
-            className="flex items-center space-x-1.5 px-4 py-2.5 rounded-xl font-semibold text-xs text-purple-300 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 transition cursor-pointer"
+            className="flex items-center space-x-1.5 px-4 py-2.5 font-bold text-xs uppercase tracking-wider text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-300 transition cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-purple-400" />
-            <span>AI Job Assistant</span>
+            <Sparkles className="w-4 h-4 text-purple-600" />
+            <span>AI Assistant</span>
           </button>
 
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="flex items-center space-x-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 transition cursor-pointer"
+            className="flex items-center space-x-2 px-5 py-2.5 font-bold text-xs sm:text-sm uppercase tracking-wider text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             <span>Add Application</span>
@@ -124,20 +124,20 @@ export const Applications: React.FC = () => {
         </div>
       </div>
 
-      {/* Search & Filter Toolbar */}
-      <div className="glass-panel p-4 rounded-2xl border border-slate-800 space-y-4">
+      {/* Search & Filter Toolbar - Square Panel */}
+      <div className="bg-white p-5 border border-slate-200 space-y-4 shadow-xs">
         
-        {/* Row 1: Search input + View Toggles + Sort */}
+        {/* Row 1: Search input + Source + Sort + View Mode */}
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
           {/* Search bar */}
-          <div className="sm:col-span-6 relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
+          <div className="sm:col-span-5 relative">
+            <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-3" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by company name or job title..."
-              className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-indigo-600"
             />
           </div>
 
@@ -146,22 +146,22 @@ export const Applications: React.FC = () => {
             <select
               value={selectedSource}
               onChange={(e) => setSelectedSource(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl bg-slate-900/90 border border-slate-700/80 text-slate-300 text-xs sm:text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full px-3.5 py-2.5 bg-white border border-slate-300 text-slate-800 font-medium text-xs sm:text-sm focus:outline-none focus:border-indigo-600"
             >
-              <option value="All">All Sources</option>
+              <option value="All">All Application Sources</option>
               {SOURCE_FILTERS.filter(s => s !== 'All').map(source => (
                 <option key={source} value={source}>{source}</option>
               ))}
             </select>
           </div>
 
-          {/* Sort Selector & Grid Toggle */}
-          <div className="sm:col-span-3 flex items-center space-x-2">
+          {/* Sort Selector */}
+          <div className="sm:col-span-4 flex items-center space-x-2">
             <div className="relative flex-1">
               <select
                 value={sort}
                 onChange={(e) => setSort(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-slate-900/90 border border-slate-700/80 text-slate-300 text-xs sm:text-sm focus:outline-none focus:border-indigo-500"
+                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 text-slate-800 font-medium text-xs sm:text-sm focus:outline-none focus:border-indigo-600"
               >
                 <option value="newest">Sort: Newest First</option>
                 <option value="oldest">Sort: Oldest First</option>
@@ -170,11 +170,11 @@ export const Applications: React.FC = () => {
               </select>
             </div>
 
-            <div className="flex items-center bg-slate-900/90 rounded-xl p-1 border border-slate-700/80">
+            <div className="flex items-center bg-slate-100 border border-slate-300 p-0.5">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-1.5 rounded-lg transition ${
-                  viewMode === 'grid' ? 'bg-indigo-600/30 text-indigo-400' : 'text-slate-400 hover:text-white'
+                className={`p-2 transition cursor-pointer ${
+                  viewMode === 'grid' ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:text-slate-900'
                 }`}
                 title="Grid View"
               >
@@ -182,8 +182,8 @@ export const Applications: React.FC = () => {
               </button>
               <button
                 onClick={() => setViewMode('table')}
-                className={`p-1.5 rounded-lg transition ${
-                  viewMode === 'table' ? 'bg-indigo-600/30 text-indigo-400' : 'text-slate-400 hover:text-white'
+                className={`p-2 transition cursor-pointer ${
+                  viewMode === 'table' ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:text-slate-900'
                 }`}
                 title="Table View"
               >
@@ -193,20 +193,20 @@ export const Applications: React.FC = () => {
           </div>
         </div>
 
-        {/* Row 2: Status Filter Pills */}
-        <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 scrollbar-none">
-          <span className="text-[11px] font-semibold text-slate-400 mr-2 flex items-center gap-1">
-            <Filter className="w-3.5 h-3.5 text-indigo-400" />
+        {/* Row 2: Status Filter Pills (Square Badges) */}
+        <div className="flex items-center space-x-2 overflow-x-auto pb-1">
+          <span className="text-[11px] font-black uppercase tracking-wider text-slate-700 mr-2 flex items-center gap-1">
+            <Filter className="w-3.5 h-3.5 text-indigo-600" />
             Status:
           </span>
           {STATUS_FILTERS.map((st) => (
             <button
               key={st}
               onClick={() => setSelectedStatus(st)}
-              className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition cursor-pointer ${
+              className={`px-3 py-1 text-xs font-bold uppercase tracking-wider whitespace-nowrap transition cursor-pointer border ${
                 selectedStatus === st
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/30'
-                  : 'bg-slate-900/60 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-100 border-slate-300'
               }`}
             >
               {st}
@@ -218,15 +218,15 @@ export const Applications: React.FC = () => {
 
       {/* Main Content Area */}
       {loading ? (
-        <div className="flex flex-col items-center justify-center py-20 text-slate-400 space-y-3">
-          <Loader2 className="w-8 h-8 animate-spin text-indigo-400" />
-          <p className="text-xs font-medium">Fetching job applications...</p>
+        <div className="flex flex-col items-center justify-center py-20 text-slate-500 space-y-3">
+          <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
+          <p className="text-xs font-bold uppercase tracking-wider">Fetching job applications...</p>
         </div>
       ) : applications.length === 0 ? (
-        <div className="text-center py-16 space-y-4 glass-panel rounded-3xl border border-slate-800">
-          <Briefcase className="w-12 h-12 text-slate-600 mx-auto" />
-          <h3 className="text-lg font-bold text-white">No Applications Found</h3>
-          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+        <div className="text-center py-16 space-y-4 bg-white border border-slate-200">
+          <Briefcase className="w-12 h-12 text-slate-400 mx-auto" />
+          <h3 className="text-base font-extrabold uppercase tracking-tight text-slate-900">No Applications Found</h3>
+          <p className="text-xs text-slate-500 max-w-sm mx-auto font-medium">
             No job applications match your current search and filter criteria.
           </p>
           <button
@@ -235,42 +235,42 @@ export const Applications: React.FC = () => {
               setSelectedStatus('All');
               setSelectedSource('All');
             }}
-            className="px-4 py-2 rounded-xl text-xs font-semibold text-indigo-400 bg-indigo-500/10 border border-indigo-500/30 hover:bg-indigo-500/20 transition cursor-pointer"
+            className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 border border-indigo-300 hover:bg-indigo-100 transition cursor-pointer"
           >
             Reset All Filters
           </button>
         </div>
       ) : viewMode === 'grid' ? (
-        /* Grid Layout Cards */
+        /* Grid Layout Cards - Square Cards */
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {applications.map((app) => (
             <div
               key={app._id}
-              className="glass-card rounded-2xl p-5 border border-slate-800 flex flex-col justify-between space-y-4 relative group"
+              className="square-card p-5 border border-slate-200 bg-white flex flex-col justify-between space-y-4 group"
             >
               <div className="space-y-3">
                 {/* Card Header: Status & Actions */}
                 <div className="flex items-center justify-between">
                   <StatusBadge status={app.status} size="sm" />
 
-                  <div className="flex items-center space-x-1 opacity-90">
+                  <div className="flex items-center space-x-1">
                     <button
                       onClick={() => handleOpenAiModal(app.jobTitle)}
-                      className="p-1.5 rounded-lg text-purple-400 hover:bg-purple-500/10 transition cursor-pointer"
+                      className="p-1.5 text-purple-600 hover:bg-purple-50 transition cursor-pointer"
                       title="AI Preparation Insights"
                     >
                       <Sparkles className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => setEditingApp(app)}
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-400 hover:bg-indigo-500/10 transition cursor-pointer"
+                      className="p-1.5 text-slate-600 hover:text-indigo-600 hover:bg-slate-100 transition cursor-pointer"
                       title="Edit Application"
                     >
                       <Edit2 className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => setDeletingApp(app)}
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition cursor-pointer"
+                      className="p-1.5 text-slate-600 hover:text-red-600 hover:bg-red-50 transition cursor-pointer"
                       title="Delete Application"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -280,18 +280,18 @@ export const Applications: React.FC = () => {
 
                 {/* Company & Job Title */}
                 <div>
-                  <h3 className="text-lg font-extrabold text-white tracking-tight group-hover:text-indigo-300 transition">
+                  <h3 className="text-base font-extrabold text-slate-900 tracking-tight group-hover:text-indigo-600 transition">
                     {app.jobTitle}
                   </h3>
-                  <div className="flex items-center space-x-2 text-xs font-semibold text-slate-400 mt-1">
-                    <Building className="w-3.5 h-3.5 text-indigo-400" />
+                  <div className="flex items-center space-x-2 text-xs font-bold text-slate-600 mt-1">
+                    <Building className="w-3.5 h-3.5 text-indigo-600" />
                     <span>{app.companyName}</span>
                     {app.jobUrl && (
                       <a
                         href={app.jobUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-indigo-400 hover:text-indigo-300 ml-1 inline-flex items-center gap-0.5"
+                        className="text-indigo-600 hover:text-indigo-800 ml-1 inline-flex items-center gap-0.5"
                         title="Open posting"
                       >
                         <ExternalLink className="w-3 h-3" />
@@ -301,13 +301,13 @@ export const Applications: React.FC = () => {
                 </div>
 
                 {/* Source & Application Date */}
-                <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1">
-                  <span className="flex items-center space-x-1 bg-slate-900/60 px-2 py-0.5 rounded-md border border-slate-800">
-                    <Tag className="w-3 h-3 text-blue-400" />
+                <div className="flex items-center justify-between text-[11px] text-slate-600 font-medium pt-1">
+                  <span className="flex items-center space-x-1 bg-slate-100 px-2 py-0.5 border border-slate-200">
+                    <Tag className="w-3 h-3 text-blue-600" />
                     <span>{app.source}</span>
                   </span>
-                  <span className="flex items-center space-x-1">
-                    <Calendar className="w-3 h-3 text-amber-400" />
+                  <span className="flex items-center space-x-1 font-mono">
+                    <Calendar className="w-3 h-3 text-amber-600" />
                     <span>
                       {new Date(app.applicationDate).toLocaleDateString(undefined, {
                         month: 'short',
@@ -320,7 +320,7 @@ export const Applications: React.FC = () => {
 
                 {/* Notes snippet */}
                 {app.notes && (
-                  <div className="p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-xs text-slate-300 line-clamp-2 italic">
+                  <div className="p-2.5 bg-slate-50 border border-slate-200 text-xs text-slate-700 line-clamp-2 italic">
                     "{app.notes}"
                   </div>
                 )}
@@ -329,12 +329,12 @@ export const Applications: React.FC = () => {
           ))}
         </div>
       ) : (
-        /* Table View */
-        <div className="glass-panel rounded-2xl border border-slate-800 overflow-hidden">
+        /* Table View - Square Borders */
+        <div className="bg-white border border-slate-200 overflow-hidden shadow-xs">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-400 uppercase tracking-wider text-[11px] bg-slate-900/50">
+                <tr className="border-b border-slate-200 bg-slate-100 text-slate-700 font-extrabold uppercase tracking-wider text-[11px]">
                   <th className="py-3 px-4">Company</th>
                   <th className="py-3 px-4">Job Title</th>
                   <th className="py-3 px-4">Source</th>
@@ -343,11 +343,11 @@ export const Applications: React.FC = () => {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-200">
+              <tbody className="divide-y divide-slate-200 text-slate-800 font-medium">
                 {applications.map((app) => (
-                  <tr key={app._id} className="hover:bg-slate-800/40 transition">
-                    <td className="py-3.5 px-4 font-bold text-white">{app.companyName}</td>
-                    <td className="py-3.5 px-4 font-medium text-slate-300">
+                  <tr key={app._id} className="hover:bg-slate-50 transition">
+                    <td className="py-3.5 px-4 font-black text-slate-900">{app.companyName}</td>
+                    <td className="py-3.5 px-4 font-bold text-slate-800">
                       <div className="flex items-center space-x-2">
                         <span>{app.jobTitle}</span>
                         {app.jobUrl && (
@@ -355,18 +355,18 @@ export const Applications: React.FC = () => {
                             href={app.jobUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-indigo-400 hover:text-indigo-300 transition"
+                            className="text-indigo-600 hover:text-indigo-800 transition"
                           >
                             <ExternalLink className="w-3.5 h-3.5" />
                           </a>
                         )}
                       </div>
                     </td>
-                    <td className="py-3.5 px-4 text-slate-400">{app.source}</td>
+                    <td className="py-3.5 px-4 text-slate-600">{app.source}</td>
                     <td className="py-3.5 px-4">
                       <StatusBadge status={app.status} size="sm" />
                     </td>
-                    <td className="py-3.5 px-4 text-slate-400">
+                    <td className="py-3.5 px-4 text-slate-600 font-mono">
                       {new Date(app.applicationDate).toLocaleDateString(undefined, {
                         month: 'short',
                         day: 'numeric',
@@ -376,21 +376,21 @@ export const Applications: React.FC = () => {
                     <td className="py-3.5 px-4 text-right space-x-1.5">
                       <button
                         onClick={() => handleOpenAiModal(app.jobTitle)}
-                        className="p-1.5 rounded-lg text-purple-400 hover:bg-purple-500/10 transition cursor-pointer"
+                        className="p-1.5 text-purple-600 hover:bg-purple-50 transition cursor-pointer"
                         title="AI Prep"
                       >
                         <Sparkles className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => setEditingApp(app)}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-400 hover:bg-indigo-500/10 transition cursor-pointer"
+                        className="p-1.5 text-slate-600 hover:text-indigo-600 hover:bg-slate-100 transition cursor-pointer"
                         title="Edit Application"
                       >
                         <Edit2 className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => setDeletingApp(app)}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition cursor-pointer"
+                        className="p-1.5 text-slate-600 hover:text-red-600 hover:bg-red-50 transition cursor-pointer"
                         title="Delete Application"
                       >
                         <Trash2 className="w-4 h-4" />

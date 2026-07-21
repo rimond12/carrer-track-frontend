@@ -53,21 +53,21 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[85vh] flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md glass-panel rounded-3xl p-8 border border-slate-800 shadow-2xl space-y-6">
-
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
+      <div className="w-full max-w-md bg-white border-2 border-slate-900 shadow-xl p-8 space-y-6">
+        
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center mx-auto shadow-md">
+          <div className="w-12 h-12 bg-indigo-600 text-white flex items-center justify-center mx-auto">
             <Briefcase className="w-6 h-6" />
           </div>
-          <h2 className="text-2xl font-extrabold text-white tracking-tight">Welcome Back</h2>
-          <p className="text-xs text-slate-400">Log in to manage your job applications and track status.</p>
+          <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tight">Welcome Back</h2>
+          <p className="text-xs text-slate-600 font-medium">Log in to manage your job applications and track status.</p>
         </div>
 
         {/* API Error Box */}
         {apiError && (
-          <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-medium text-center">
+          <div className="p-3.5 bg-red-50 border border-red-300 text-red-700 text-xs font-bold text-center">
             {apiError}
           </div>
         )}
@@ -75,24 +75,25 @@ export const Login: React.FC = () => {
         {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center gap-1.5">
-              <Mail className="w-3.5 h-3.5 text-indigo-400" />
+            <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center gap-1.5">
+              <Mail className="w-3.5 h-3.5 text-indigo-600" />
               Email Address
             </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="e.g. example@mail.com"
-              className={`w-full px-4 py-3 rounded-xl bg-slate-900/90 border ${errors.email ? 'border-red-500' : 'border-slate-700'
-                } text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500`}
+              placeholder="e.g. sumit@example.com"
+              className={`w-full px-4 py-3 bg-white border ${
+                errors.email ? 'border-red-500' : 'border-slate-300'
+              } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
             />
-            {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
+            {errors.email && <p className="mt-1 text-xs font-bold text-red-600">{errors.email}</p>}
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center gap-1.5">
-              <Lock className="w-3.5 h-3.5 text-purple-400" />
+            <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center gap-1.5">
+              <Lock className="w-3.5 h-3.5 text-purple-600" />
               Password
             </label>
             <input
@@ -100,16 +101,17 @@ export const Login: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className={`w-full px-4 py-3 rounded-xl bg-slate-900/90 border ${errors.password ? 'border-red-500' : 'border-slate-700'
-                } text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500`}
+              className={`w-full px-4 py-3 bg-white border ${
+                errors.password ? 'border-red-500' : 'border-slate-300'
+              } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-indigo-600`}
             />
-            {errors.password && <p className="mt-1 text-xs text-red-400">{errors.password}</p>}
+            {errors.password && <p className="mt-1 text-xs font-bold text-red-600">{errors.password}</p>}
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 disabled:opacity-50 transition shadow-lg shadow-indigo-500/25 cursor-pointer mt-2"
+            className="w-full flex items-center justify-center space-x-2 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 transition shadow-sm cursor-pointer mt-2"
           >
             {loading ? (
               <>
@@ -126,10 +128,10 @@ export const Login: React.FC = () => {
         </form>
 
         {/* Bottom Link */}
-        <div className="text-center pt-2 border-t border-slate-800">
-          <p className="text-xs text-slate-400">
+        <div className="text-center pt-3 border-t border-slate-200">
+          <p className="text-xs text-slate-600 font-medium">
             Don't have an account yet?{' '}
-            <Link to="/register" className="text-indigo-400 font-semibold hover:underline">
+            <Link to="/register" className="text-indigo-600 font-bold hover:underline">
               Create a free account
             </Link>
           </p>

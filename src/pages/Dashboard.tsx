@@ -86,20 +86,20 @@ export const Dashboard: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       
-      {/* Header Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 glass-panel p-6 rounded-3xl border border-slate-800">
+      {/* Header Banner - Square Panel */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 border-2 border-slate-900 shadow-xs">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center gap-2">
-            Application Dashboard <Sparkles className="w-6 h-6 text-amber-400" />
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+            Application Dashboard <Sparkles className="w-6 h-6 text-amber-500" />
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 font-medium mt-1">
             Overview of your active job application funnel and recent progress.
           </p>
         </div>
 
         <button
           onClick={() => setIsAddModalOpen(true)}
-          className="flex items-center justify-center space-x-2 px-5 py-3 rounded-xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 transition cursor-pointer"
+          className="flex items-center justify-center space-x-2 px-6 py-3 font-bold text-xs sm:text-sm uppercase tracking-wider text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Add New Application</span>
@@ -109,8 +109,8 @@ export const Dashboard: React.FC = () => {
       {/* 7 Statistics Cards Grid */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
-            <Layers className="w-4 h-4 text-indigo-400" />
+          <h2 className="text-xs font-black uppercase tracking-wider text-slate-700 flex items-center gap-2">
+            <Layers className="w-4 h-4 text-indigo-600" />
             Application Metrics
           </h2>
         </div>
@@ -118,7 +118,7 @@ export const Dashboard: React.FC = () => {
         {loading ? (
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
             {[...Array(7)].map((_, i) => (
-              <div key={i} className="h-28 glass-card rounded-2xl animate-pulse" />
+              <div key={i} className="h-28 bg-white border border-slate-200 animate-pulse" />
             ))}
           </div>
         ) : (
@@ -127,56 +127,49 @@ export const Dashboard: React.FC = () => {
               title="Total"
               count={stats.total}
               icon={Briefcase}
-              colorClass="bg-indigo-500/20 text-indigo-300 border-indigo-500/30"
-              bgGlow="bg-indigo-500"
+              colorClass="bg-indigo-50 text-indigo-700 border-indigo-200"
               onClick={() => navigate('/applications')}
             />
             <StatCard
               title="Saved"
               count={stats.saved}
               icon={Bookmark}
-              colorClass="bg-slate-500/20 text-slate-300 border-slate-500/30"
-              bgGlow="bg-slate-500"
+              colorClass="bg-slate-100 text-slate-700 border-slate-300"
               onClick={() => navigate('/applications?status=Saved')}
             />
             <StatCard
               title="Applied"
               count={stats.applied}
               icon={Send}
-              colorClass="bg-blue-500/20 text-blue-300 border-blue-500/30"
-              bgGlow="bg-blue-500"
+              colorClass="bg-blue-50 text-blue-700 border-blue-200"
               onClick={() => navigate('/applications?status=Applied')}
             />
             <StatCard
               title="Assessment"
               count={stats.assessment}
               icon={FileCode}
-              colorClass="bg-amber-500/20 text-amber-300 border-amber-500/30"
-              bgGlow="bg-amber-500"
+              colorClass="bg-amber-50 text-amber-800 border-amber-200"
               onClick={() => navigate('/applications?status=Assessment')}
             />
             <StatCard
               title="Interview"
               count={stats.interview}
               icon={Users}
-              colorClass="bg-purple-500/20 text-purple-300 border-purple-500/30"
-              bgGlow="bg-purple-500"
+              colorClass="bg-purple-50 text-purple-700 border-purple-200"
               onClick={() => navigate('/applications?status=Interview')}
             />
             <StatCard
               title="Rejected"
               count={stats.rejected}
               icon={XCircle}
-              colorClass="bg-rose-500/20 text-rose-300 border-rose-500/30"
-              bgGlow="bg-rose-500"
+              colorClass="bg-rose-50 text-rose-700 border-rose-200"
               onClick={() => navigate('/applications?status=Rejected')}
             />
             <StatCard
               title="Offers"
               count={stats.offer}
               icon={CheckCircle2}
-              colorClass="bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
-              bgGlow="bg-emerald-500"
+              colorClass="bg-emerald-50 text-emerald-800 border-emerald-200"
               onClick={() => navigate('/applications?status=Offer')}
             />
           </div>
@@ -185,54 +178,54 @@ export const Dashboard: React.FC = () => {
 
       {/* Visual Application Progress Ratio Bar */}
       {stats.total > 0 && (
-        <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div className="flex items-center justify-between text-xs font-semibold text-slate-300">
+        <div className="bg-white p-5 border border-slate-200 space-y-3 shadow-xs">
+          <div className="flex items-center justify-between text-xs font-bold text-slate-700 uppercase tracking-wider">
             <span>Pipeline Distribution ({stats.total} total)</span>
-            <span className="text-emerald-400">
+            <span className="text-emerald-700">
               {Math.round(((stats.offer + stats.interview) / stats.total) * 100)}% Active Pipeline
             </span>
           </div>
 
-          <div className="h-3 w-full rounded-full bg-slate-900 overflow-hidden flex shadow-inner">
+          <div className="h-3 w-full bg-slate-100 border border-slate-200 overflow-hidden flex">
             {stats.saved > 0 && (
               <div
                 style={{ width: `${(stats.saved / stats.total) * 100}%` }}
-                className="bg-slate-500 h-full transition-all"
+                className="bg-slate-400 h-full"
                 title={`Saved: ${stats.saved}`}
               />
             )}
             {stats.applied > 0 && (
               <div
                 style={{ width: `${(stats.applied / stats.total) * 100}%` }}
-                className="bg-blue-500 h-full transition-all"
+                className="bg-blue-600 h-full"
                 title={`Applied: ${stats.applied}`}
               />
             )}
             {stats.assessment > 0 && (
               <div
                 style={{ width: `${(stats.assessment / stats.total) * 100}%` }}
-                className="bg-amber-500 h-full transition-all"
+                className="bg-amber-500 h-full"
                 title={`Assessment: ${stats.assessment}`}
               />
             )}
             {stats.interview > 0 && (
               <div
                 style={{ width: `${(stats.interview / stats.total) * 100}%` }}
-                className="bg-purple-500 h-full transition-all"
+                className="bg-purple-600 h-full"
                 title={`Interview: ${stats.interview}`}
               />
             )}
             {stats.offer > 0 && (
               <div
                 style={{ width: `${(stats.offer / stats.total) * 100}%` }}
-                className="bg-emerald-500 h-full transition-all"
+                className="bg-emerald-600 h-full"
                 title={`Offer: ${stats.offer}`}
               />
             )}
             {stats.rejected > 0 && (
               <div
                 style={{ width: `${(stats.rejected / stats.total) * 100}%` }}
-                className="bg-rose-500 h-full transition-all"
+                className="bg-rose-500 h-full"
                 title={`Rejected: ${stats.rejected}`}
               />
             )}
@@ -241,37 +234,37 @@ export const Dashboard: React.FC = () => {
       )}
 
       {/* Recently Added Applications Section */}
-      <div className="glass-panel rounded-3xl border border-slate-800 p-6 space-y-4">
-        <div className="flex items-center justify-between">
+      <div className="bg-white border border-slate-200 p-6 space-y-4 shadow-xs">
+        <div className="flex items-center justify-between border-b border-slate-200 pb-4">
           <div className="flex items-center space-x-2">
-            <Clock className="w-5 h-5 text-indigo-400" />
-            <h2 className="text-lg font-bold text-white tracking-tight">Recently Added Applications</h2>
+            <Clock className="w-5 h-5 text-indigo-600" />
+            <h2 className="text-base font-extrabold uppercase tracking-tight text-slate-900">Recently Added Applications</h2>
           </div>
 
           <Link
             to="/applications"
-            className="flex items-center space-x-1 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition"
+            className="flex items-center space-x-1 text-xs font-bold text-indigo-600 hover:text-indigo-800 transition uppercase tracking-wider"
           >
-            <span>View All Applications</span>
+            <span>View All</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
         {loading ? (
-          <div className="flex items-center justify-center py-12 text-slate-400 space-x-2">
-            <Loader2 className="w-5 h-5 animate-spin text-indigo-400" />
-            <span className="text-xs">Loading recent applications...</span>
+          <div className="flex items-center justify-center py-12 text-slate-500 space-x-2">
+            <Loader2 className="w-5 h-5 animate-spin text-indigo-600" />
+            <span className="text-xs font-bold">Loading recent applications...</span>
           </div>
         ) : recentApplications.length === 0 ? (
-          <div className="text-center py-12 space-y-3 bg-slate-900/40 rounded-2xl border border-slate-800/60">
-            <Briefcase className="w-10 h-10 text-slate-600 mx-auto" />
-            <p className="text-sm font-semibold text-slate-300">No Job Applications Found</p>
-            <p className="text-xs text-slate-400 max-w-sm mx-auto">
+          <div className="text-center py-12 space-y-3 bg-slate-50 border border-slate-200">
+            <Briefcase className="w-10 h-10 text-slate-400 mx-auto" />
+            <p className="text-sm font-extrabold text-slate-800">No Job Applications Found</p>
+            <p className="text-xs text-slate-500 max-w-sm mx-auto font-medium">
               Start building your application tracker by adding your first job entry.
             </p>
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-500 transition cursor-pointer"
+              className="inline-flex items-center space-x-2 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-indigo-600 hover:bg-indigo-700 transition cursor-pointer"
             >
               <Plus className="w-4 h-4" />
               <span>Add First Application</span>
@@ -279,9 +272,9 @@ export const Dashboard: React.FC = () => {
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
+            <table className="w-full text-left text-xs border border-slate-200">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-400 uppercase tracking-wider text-[11px]">
+                <tr className="border-b border-slate-200 bg-slate-100 text-slate-700 font-extrabold uppercase tracking-wider text-[11px]">
                   <th className="py-3 px-4">Company</th>
                   <th className="py-3 px-4">Job Title</th>
                   <th className="py-3 px-4">Source</th>
@@ -290,11 +283,11 @@ export const Dashboard: React.FC = () => {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-200">
+              <tbody className="divide-y divide-slate-200 text-slate-800 font-medium">
                 {recentApplications.map((app) => (
-                  <tr key={app._id} className="hover:bg-slate-800/40 transition">
-                    <td className="py-3.5 px-4 font-bold text-white">{app.companyName}</td>
-                    <td className="py-3.5 px-4 font-medium text-slate-300">
+                  <tr key={app._id} className="hover:bg-slate-50 transition">
+                    <td className="py-3.5 px-4 font-black text-slate-900">{app.companyName}</td>
+                    <td className="py-3.5 px-4 font-bold text-slate-800">
                       <div className="flex items-center space-x-2">
                         <span>{app.jobTitle}</span>
                         {app.jobUrl && (
@@ -302,7 +295,7 @@ export const Dashboard: React.FC = () => {
                             href={app.jobUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-slate-400 hover:text-indigo-400 transition"
+                            className="text-indigo-600 hover:text-indigo-800 transition"
                             title="Open original job link"
                           >
                             <ExternalLink className="w-3.5 h-3.5" />
@@ -310,11 +303,11 @@ export const Dashboard: React.FC = () => {
                         )}
                       </div>
                     </td>
-                    <td className="py-3.5 px-4 text-slate-400">{app.source}</td>
+                    <td className="py-3.5 px-4 text-slate-600">{app.source}</td>
                     <td className="py-3.5 px-4">
                       <StatusBadge status={app.status} size="sm" />
                     </td>
-                    <td className="py-3.5 px-4 text-slate-400">
+                    <td className="py-3.5 px-4 text-slate-600 font-mono">
                       {new Date(app.applicationDate).toLocaleDateString(undefined, {
                         month: 'short',
                         day: 'numeric',
@@ -324,14 +317,14 @@ export const Dashboard: React.FC = () => {
                     <td className="py-3.5 px-4 text-right space-x-2">
                       <button
                         onClick={() => setEditingApp(app)}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-400 hover:bg-indigo-500/10 transition cursor-pointer"
+                        className="p-1.5 text-slate-600 hover:text-indigo-600 hover:bg-slate-100 transition cursor-pointer"
                         title="Edit Application"
                       >
                         <Edit2 className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => setDeletingApp(app)}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition cursor-pointer"
+                        className="p-1.5 text-slate-600 hover:text-red-600 hover:bg-red-50 transition cursor-pointer"
                         title="Delete Application"
                       >
                         <Trash2 className="w-4 h-4" />
