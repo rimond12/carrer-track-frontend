@@ -331,9 +331,12 @@ export const Portals: React.FC = () => {
                 {/* Header */}
                 <div className="flex items-start justify-between">
                   <div className="flex items-center space-x-3">
-                    <div className={`w-11 h-11 ${c.bg} ${c.text} flex items-center justify-center font-black text-lg shadow-xs flex-shrink-0`}>
-                      {portal.name.charAt(0).toUpperCase()}
-                    </div>
+                    <div className={`w-11 h-11 ${c.bg} ${c.text} flex items-center justify-center font-black text-lg shadow-xs flex-shrink-0 overflow-hidden`}>
+                    {portal.logoUrl
+                      ? <img src={portal.logoUrl} alt={portal.name} className="w-full h-full object-cover" />
+                      : portal.name.charAt(0).toUpperCase()
+                    }
+                  </div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-1.5">
                         <h3 className="text-base font-extrabold text-slate-900 dark:text-white tracking-tight truncate max-w-28">
@@ -488,8 +491,11 @@ export const Portals: React.FC = () => {
               >
                 {/* Portal name + link */}
                 <div className="col-span-10 sm:col-span-4 flex items-center gap-3 min-w-0">
-                  <div className={`w-9 h-9 ${c.bg} ${c.text} flex items-center justify-center font-black text-sm flex-shrink-0`}>
-                    {portal.name.charAt(0).toUpperCase()}
+                  <div className={`w-9 h-9 ${c.bg} ${c.text} flex items-center justify-center font-black text-sm flex-shrink-0 overflow-hidden`}>
+                    {portal.logoUrl
+                      ? <img src={portal.logoUrl} alt={portal.name} className="w-full h-full object-cover" />
+                      : portal.name.charAt(0).toUpperCase()
+                    }
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-1">

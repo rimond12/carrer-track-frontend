@@ -23,6 +23,7 @@ export interface Portal {
   isActive: boolean;
   order: number;
   isSystem?: boolean;
+  logoUrl?: string;
   createdAt: string;
   updatedAt: string;
   // Computed analytics
