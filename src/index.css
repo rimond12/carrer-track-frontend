@@ -1,60 +1,111 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
-:root {
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
+
+:root,
+[data-theme="light"] {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   color-scheme: light;
+
+  /* Theme Tokens: Light */
+  --bg-body: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-hover: #f8fafc;
+  --border-color: #e2e8f0;
+  --border-strong: #0f172a;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --input-bg: #ffffff;
+  --input-border: #cbd5e1;
+  --input-focus: #4f46e5;
+  --primary-accent: #4f46e5;
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"],
+.dark {
+  color-scheme: dark;
+
+  /* Theme Tokens: Dark */
+  --bg-body: #090d16;
+  --bg-surface: #111827;
+  --bg-subtle: #1a2234;
+  --bg-hover: #1e293b;
+  --border-color: #2e384d;
+  --border-strong: #6366f1;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --input-bg: #161f30;
+  --input-border: #374151;
+  --input-focus: #818cf8;
+  --primary-accent: #6366f1;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Custom Scrollbar for Light Theme */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-::-webkit-scrollbar-track {
+[data-theme="light"] ::-webkit-scrollbar-track {
   background: #f1f5f9;
 }
-
-::-webkit-scrollbar-thumb {
+[data-theme="light"] ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 2px;
 }
-
-::-webkit-scrollbar-thumb:hover {
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
 
-/* Square & Clean Light Utilities */
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 2px;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Square & Clean Custom Panels */
 .square-panel {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
   border-radius: 0px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .square-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
   border-radius: 0px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: var(--card-shadow);
   transition: all 0.2s ease-in-out;
 }
 
 .square-card:hover {
   border-color: #6366f1;
-  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.12), 0 8px 10px -6px rgba(99, 102, 241, 0.08);
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.18), 0 8px 10px -6px rgba(99, 102, 241, 0.1);
   transform: translateY(-2px);
 }
 

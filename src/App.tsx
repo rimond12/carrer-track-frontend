@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Landing } from './pages/Landing';
@@ -8,6 +9,7 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Dashboard } from './pages/Dashboard';
 import { Applications } from './pages/Applications';
+import { Portals } from './pages/Portals';
 import { NotFound } from './pages/NotFound';
 import { Loader2 } from 'lucide-react';
 
@@ -51,7 +53,7 @@ const PublicOnlyRoute: React.FC<{ children: React.ReactNode }> = ({ children }) 
 
 export const AppContent: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#f8fafc] text-slate-900 selection:bg-indigo-600 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[var(--bg-body)] text-[var(--text-primary)] selection:bg-indigo-600 selection:text-white transition-colors duration-200">
       <Navbar />
       <main className="flex-1">
         <Routes>
@@ -88,6 +90,14 @@ export const AppContent: React.FC = () => {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/portals"
+            element={
+              <ProtectedRoute>
+                <Portals />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
@@ -98,11 +108,13 @@ export const AppContent: React.FC = () => {
 
 export const App: React.FC = () => {
   return (
-    <AuthProvider>
-      <Router>
-        <AppContent />
-      </Router>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
   );
 };
 

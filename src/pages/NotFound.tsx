@@ -8,15 +8,15 @@ export const NotFound: React.FC = () => {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
-      <div className="text-center space-y-6 max-w-md bg-white border-2 border-slate-900 shadow-xl p-8">
-        <div className="w-16 h-16 bg-indigo-50 border border-indigo-200 text-indigo-700 flex items-center justify-center mx-auto shadow-xs">
+      <div className="text-center space-y-6 max-w-md bg-white dark:bg-slate-900 border-2 border-slate-900 dark:border-indigo-500/50 shadow-xl p-8 transition-colors">
+        <div className="w-16 h-16 bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-400 flex items-center justify-center mx-auto shadow-xs">
           <HelpCircle className="w-8 h-8" />
         </div>
 
         <div>
-          <h1 className="text-4xl font-black text-slate-900 tracking-tight">404</h1>
-          <p className="text-base font-extrabold text-slate-800 uppercase tracking-tight mt-1">Page Not Found</p>
-          <p className="text-xs text-slate-600 font-medium mt-2">
+          <h1 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">404</h1>
+          <p className="text-base font-extrabold text-slate-800 dark:text-slate-200 uppercase tracking-tight mt-1">Page Not Found</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 font-medium mt-2">
             The page you are looking for doesn't exist or has been moved.
           </p>
         </div>

@@ -21,13 +21,15 @@ export const StatCard: React.FC<StatCardProps> = ({
     <div
       onClick={onClick}
       className={`square-card p-4 sm:p-5 relative transition-all duration-200 cursor-pointer ${
-        activeFilter ? 'border-2 border-indigo-600 bg-indigo-50/40' : 'bg-white hover:border-indigo-400'
+        activeFilter
+          ? 'border-2 border-indigo-600 bg-indigo-50/40 dark:bg-indigo-950/40'
+          : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-500'
       }`}
     >
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{title}</p>
-          <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mt-1 tracking-tight">{count}</h3>
+          <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">{title}</p>
+          <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1 tracking-tight">{count}</h3>
         </div>
 
         <div className={`w-10 h-10 flex items-center justify-center border ${colorClass} shadow-xs`}>

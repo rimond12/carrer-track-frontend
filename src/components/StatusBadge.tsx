@@ -12,45 +12,45 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, size = 'md' })
     switch (status) {
       case 'Saved':
         return {
-          bg: 'bg-slate-100 text-slate-700 border-slate-300',
+          bg: 'bg-slate-100 text-slate-700 border-slate-300 dark:bg-slate-800/80 dark:text-slate-300 dark:border-slate-700',
           icon: Bookmark,
-          dot: 'bg-slate-500',
+          dot: 'bg-slate-500 dark:bg-slate-400',
         };
       case 'Applied':
         return {
-          bg: 'bg-blue-50 text-blue-700 border-blue-300',
+          bg: 'bg-blue-50 text-blue-700 border-blue-300 dark:bg-blue-950/70 dark:text-blue-300 dark:border-blue-800',
           icon: Send,
-          dot: 'bg-blue-600',
+          dot: 'bg-blue-600 dark:bg-blue-400',
         };
       case 'Assessment':
         return {
-          bg: 'bg-amber-50 text-amber-800 border-amber-300',
+          bg: 'bg-amber-50 text-amber-800 border-amber-300 dark:bg-amber-950/70 dark:text-amber-300 dark:border-amber-800',
           icon: FileCode,
-          dot: 'bg-amber-600',
+          dot: 'bg-amber-600 dark:bg-amber-400',
         };
       case 'Interview':
         return {
-          bg: 'bg-purple-50 text-purple-700 border-purple-300',
+          bg: 'bg-purple-50 text-purple-700 border-purple-300 dark:bg-purple-950/70 dark:text-purple-300 dark:border-purple-800',
           icon: Users,
-          dot: 'bg-purple-600',
+          dot: 'bg-purple-600 dark:bg-purple-400',
         };
       case 'Rejected':
         return {
-          bg: 'bg-rose-50 text-rose-700 border-rose-300',
+          bg: 'bg-rose-50 text-rose-700 border-rose-300 dark:bg-rose-950/70 dark:text-rose-300 dark:border-rose-800',
           icon: XCircle,
-          dot: 'bg-rose-600',
+          dot: 'bg-rose-600 dark:bg-rose-400',
         };
       case 'Offer':
         return {
-          bg: 'bg-emerald-50 text-emerald-800 border-emerald-300',
+          bg: 'bg-emerald-50 text-emerald-800 border-emerald-300 dark:bg-emerald-950/70 dark:text-emerald-300 dark:border-emerald-800',
           icon: CheckCircle2,
-          dot: 'bg-emerald-600',
+          dot: 'bg-emerald-600 dark:bg-emerald-400',
         };
       default:
         return {
-          bg: 'bg-slate-100 text-slate-700 border-slate-300',
+          bg: 'bg-slate-100 text-slate-700 border-slate-300 dark:bg-slate-800/80 dark:text-slate-300 dark:border-slate-700',
           icon: Bookmark,
-          dot: 'bg-slate-500',
+          dot: 'bg-slate-500 dark:bg-slate-400',
         };
     }
   };
